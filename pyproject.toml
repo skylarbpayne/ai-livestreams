@@ -15,4 +15,4 @@ dev = [
 ]
 
 [tool.uv.workspace]
-members = ["durable-streaming"]
+members = ["durable-streaming", "error_reinsertion"]
