@@ -10,7 +10,11 @@ from mirascope import llm, prompt_template
 
 
 @llm.call(provider="openai", model="gpt-4o-mini")
-@prompt_template("Explain what {topic}. Keep it simple and easy to understand.")
+@prompt_template("""
+Explain {topic}. Be thorough and detailed, but keep it simple and easy to understand.
+Use plaintext, not markdown. Write like a human. Avoid being overly formal. Be a little messy, not too formulaic or structured.
+Make sure to be engaging.
+""")
 def explain_concept(topic: str) -> str: ...
 
 
@@ -24,13 +28,9 @@ def main():
     
     print(f"Asking for explanation of: {topic}")
     print("-" * 50)
-    
-    try:
-        response = explain_concept(topic)
-        print(response)
-    except Exception as e:
-        print(f"Error: {e}")
 
+    response = explain_concept(topic)
+    print(response)
 
 if __name__ == "__main__":
     main()
