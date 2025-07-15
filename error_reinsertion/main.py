@@ -6,20 +6,18 @@ or academic responses when users want casual, friendly explanations.
 """
 
 import os
-from mirascope import llm
+from mirascope import llm, prompt_template
 
 
 @llm.call(provider="openai", model="gpt-4o-mini")
-def explain_concept(topic: str) -> str:
-    """Explain a programming concept in simple terms."""
-    return f"Explain what {topic} is in programming. Keep it simple and easy to understand."
+@prompt_template("Explain what {topic}. Keep it simple and easy to understand.")
+def explain_concept(topic: str) -> str: ...
 
 
 def main():
     # Set up OpenAI API key (user should set this)
     if not os.getenv("OPENAI_API_KEY"):
-        print("Please set your OPENAI_API_KEY environment variable")
-        return
+        raise EnvironmentError("Please set your OPENAI_API_KEY environment variable")
     
     # Example query that often gets overly formal responses
     topic = input("Enter a topic to explain: ")
