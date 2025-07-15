@@ -9,6 +9,7 @@ resolution-markers = [
 members = [
     "ai-livestreams",
     "durable-streaming",
+    "error-reinsertion",
 ]
 
 [[package]]
@@ -238,6 +239,17 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [{ name = "ipdb", specifier = ">=0.13.13" }]
+
+[[package]]
+name = "error-reinsertion"
+version = "0.1.0"
+source = { virtual = "error_reinsertion" }
+dependencies = [
+    { name = "mirascope", extra = ["openai"] },
+]
+
+[package.metadata]
+requires-dist = [{ name = "mirascope", extras = ["openai"], specifier = ">=1.25.2" }]
 
 [[package]]
 name = "et-xmlfile"
