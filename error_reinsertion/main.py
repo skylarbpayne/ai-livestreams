@@ -6,10 +6,10 @@ or academic responses when users want casual, friendly explanations.
 """
 
 import os
-from mirascope.core import openai
+from mirascope import llm
 
 
-@openai.call("gpt-4o-mini")
+@llm.call(provider="openai", model="gpt-4o-mini")
 def explain_concept(topic: str) -> str:
     """Explain a programming concept in simple terms."""
     return f"Explain what {topic} is in programming. Keep it simple and easy to understand."
@@ -22,7 +22,7 @@ def main():
         return
     
     # Example query that often gets overly formal responses
-    topic = "recursion"
+    topic = input("Enter a topic to explain: ")
     
     print(f"Asking for explanation of: {topic}")
     print("-" * 50)
